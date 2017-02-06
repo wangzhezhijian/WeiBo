@@ -43,4 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+func MyLog<T>(message: T,file : String = #file,funcName : String = #function,lineNum : Int = #line){
+    #if DEBUG
+        
+        let fileName = (file as NSString).lastPathComponent
+        print("\(fileName):[\(funcName)](\(#line))-\(message)")
+    #endif
+    
+}
