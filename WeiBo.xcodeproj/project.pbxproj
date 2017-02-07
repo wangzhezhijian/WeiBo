@@ -13,6 +13,11 @@
 		601556B11E4872D400780708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601556AF1E4872D400780708 /* LaunchScreen.storyboard */; };
 		601556BC1E4872D400780708 /* WeiBoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556BB1E4872D400780708 /* WeiBoTests.swift */; };
 		601556C71E4872D400780708 /* WeiBoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556C61E4872D400780708 /* WeiBoUITests.swift */; };
+		601556DB1E495FCE00780708 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556DA1E495FCE00780708 /* MainViewController.swift */; };
+		601556DD1E496A2800780708 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556DC1E496A2800780708 /* HomeViewController.swift */; };
+		601556DF1E496A3900780708 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556DE1E496A3900780708 /* DiscoverViewController.swift */; };
+		601556E11E496A4900780708 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556E01E496A4900780708 /* MessageViewController.swift */; };
+		601556E31E496A5C00780708 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556E21E496A5C00780708 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		601556C21E4872D400780708 /* WeiBoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeiBoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		601556C61E4872D400780708 /* WeiBoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoUITests.swift; sourceTree = "<group>"; };
 		601556C81E4872D400780708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		601556DA1E495FCE00780708 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		601556DC1E496A2800780708 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		601556DE1E496A3900780708 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		601556E01E496A4900780708 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		601556E21E496A5C00780708 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +148,7 @@
 		601556D51E495DA700780708 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				601556DE1E496A3900780708 /* DiscoverViewController.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 		601556D61E495DA700780708 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				601556DC1E496A2800780708 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -152,6 +164,7 @@
 		601556D71E495DA700780708 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				601556DA1E495FCE00780708 /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -159,6 +172,7 @@
 		601556D81E495DA700780708 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				601556E01E496A4900780708 /* MessageViewController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -166,6 +180,7 @@
 		601556D91E495DA700780708 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				601556E21E496A5C00780708 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -304,7 +319,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				601556E31E496A5C00780708 /* ProfileViewController.swift in Sources */,
 				601556A71E4872D400780708 /* AppDelegate.swift in Sources */,
+				601556DF1E496A3900780708 /* DiscoverViewController.swift in Sources */,
+				601556DB1E495FCE00780708 /* MainViewController.swift in Sources */,
+				601556DD1E496A2800780708 /* HomeViewController.swift in Sources */,
+				601556E11E496A4900780708 /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
