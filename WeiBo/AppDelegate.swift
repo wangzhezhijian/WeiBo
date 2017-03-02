@@ -18,11 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // 设置全局tabbar 颜色
         UITabBar.appearance().tintColor = UIColor.orange
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainViewController()
-        window?.makeKeyAndVisible()
-        
+        UINavigationBar.appearance().tintColor = UIColor.orange
+            
         return true
     }
 

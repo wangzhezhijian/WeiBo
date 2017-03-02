@@ -18,6 +18,22 @@
 		601556DF1E496A3900780708 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556DE1E496A3900780708 /* DiscoverViewController.swift */; };
 		601556E11E496A4900780708 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556E01E496A4900780708 /* MessageViewController.swift */; };
 		601556E31E496A5C00780708 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601556E21E496A5C00780708 /* ProfileViewController.swift */; };
+		601556EA1E4999D600780708 /* MainVCSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = 601556E91E4999D600780708 /* MainVCSettings.json */; };
+		604AF0661E63D1C700AD3CC2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604AF0641E63D1C700AD3CC2 /* Home.storyboard */; };
+		604AF0681E63D20800AD3CC2 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604AF0671E63D20800AD3CC2 /* Message.storyboard */; };
+		604AF06B1E63D23500AD3CC2 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604AF0691E63D23500AD3CC2 /* Discover.storyboard */; };
+		604AF06D1E63D25000AD3CC2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604AF06C1E63D25000AD3CC2 /* Profile.storyboard */; };
+		604AF0711E640D2D00AD3CC2 /* UIButton-backImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF0701E640D2D00AD3CC2 /* UIButton-backImage.swift */; };
+		60FF00031E666DE20000741C /* WxkPch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF00021E666DE20000741C /* WxkPch.swift */; };
+		60FF00051E66A7820000741C /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF00041E66A7820000741C /* PopoverAnimator.swift */; };
+		60FFFFF01E6519550000741C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFFFEF1E6519550000741C /* BaseViewController.swift */; };
+		60FFFFF21E651BAF0000741C /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFFFF11E651BAF0000741C /* VisitorView.swift */; };
+		60FFFFF41E651BBA0000741C /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60FFFFF31E651BBA0000741C /* VisitorView.xib */; };
+		60FFFFF61E656FC50000741C /* UIBarButtonItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFFFF51E656FC50000741C /* UIBarButtonItem-Extension.swift */; };
+		60FFFFF81E657C0E0000741C /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFFFF71E657C0E0000741C /* TitleButton.swift */; };
+		60FFFFFC1E665BCE0000741C /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFFFFA1E665BCE0000741C /* PopoverViewController.swift */; };
+		60FFFFFD1E665BCE0000741C /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60FFFFFB1E665BCE0000741C /* PopoverViewController.xib */; };
+		60FFFFFF1E6669140000741C /* WxkPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFFFFE1E6669140000741C /* WxkPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +71,22 @@
 		601556DE1E496A3900780708 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		601556E01E496A4900780708 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		601556E21E496A5C00780708 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		601556E91E4999D600780708 /* MainVCSettings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MainVCSettings.json; sourceTree = "<group>"; };
+		604AF0651E63D1C700AD3CC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		604AF0671E63D20800AD3CC2 /* Message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Message.storyboard; path = ../../Message.storyboard; sourceTree = "<group>"; };
+		604AF06A1E63D23500AD3CC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
+		604AF06C1E63D25000AD3CC2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = ../../Profile.storyboard; sourceTree = "<group>"; };
+		604AF0701E640D2D00AD3CC2 /* UIButton-backImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton-backImage.swift"; sourceTree = "<group>"; };
+		60FF00021E666DE20000741C /* WxkPch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WxkPch.swift; sourceTree = "<group>"; };
+		60FF00041E66A7820000741C /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
+		60FFFFEF1E6519550000741C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		60FFFFF11E651BAF0000741C /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		60FFFFF31E651BBA0000741C /* VisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
+		60FFFFF51E656FC50000741C /* UIBarButtonItem-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extension.swift"; sourceTree = "<group>"; };
+		60FFFFF71E657C0E0000741C /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
+		60FFFFFA1E665BCE0000741C /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		60FFFFFB1E665BCE0000741C /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
+		60FFFFFE1E6669140000741C /* WxkPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WxkPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +168,7 @@
 		601556D41E495DA700780708 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				604AF06E1E640CEF00AD3CC2 /* Tools */,
 				601556D51E495DA700780708 /* Discover */,
 				601556D61E495DA700780708 /* Home */,
 				601556D71E495DA700780708 /* Main */,
@@ -149,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				601556DE1E496A3900780708 /* DiscoverViewController.swift */,
+				604AF0691E63D23500AD3CC2 /* Discover.storyboard */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -156,7 +190,9 @@
 		601556D61E495DA700780708 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				60FFFFF91E665B940000741C /* UIPopover */,
 				601556DC1E496A2800780708 /* HomeViewController.swift */,
+				604AF0641E63D1C700AD3CC2 /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -164,6 +200,8 @@
 		601556D71E495DA700780708 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				60FFFFEC1E6510B10000741C /* Visitor */,
+				601556E61E49997400780708 /* Resource */,
 				601556DA1E495FCE00780708 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -173,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				601556E01E496A4900780708 /* MessageViewController.swift */,
+				604AF0671E63D20800AD3CC2 /* Message.storyboard */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -181,8 +220,57 @@
 			isa = PBXGroup;
 			children = (
 				601556E21E496A5C00780708 /* ProfileViewController.swift */,
+				604AF06C1E63D25000AD3CC2 /* Profile.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		601556E61E49997400780708 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				601556E91E4999D600780708 /* MainVCSettings.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		604AF06E1E640CEF00AD3CC2 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				604AF06F1E640CEF00AD3CC2 /* Catory */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		604AF06F1E640CEF00AD3CC2 /* Catory */ = {
+			isa = PBXGroup;
+			children = (
+				604AF0701E640D2D00AD3CC2 /* UIButton-backImage.swift */,
+				60FFFFF51E656FC50000741C /* UIBarButtonItem-Extension.swift */,
+				60FFFFF71E657C0E0000741C /* TitleButton.swift */,
+				60FF00021E666DE20000741C /* WxkPch.swift */,
+			);
+			path = Catory;
+			sourceTree = "<group>";
+		};
+		60FFFFEC1E6510B10000741C /* Visitor */ = {
+			isa = PBXGroup;
+			children = (
+				60FFFFEF1E6519550000741C /* BaseViewController.swift */,
+				60FFFFF11E651BAF0000741C /* VisitorView.swift */,
+				60FFFFF31E651BBA0000741C /* VisitorView.xib */,
+			);
+			path = Visitor;
+			sourceTree = "<group>";
+		};
+		60FFFFF91E665B940000741C /* UIPopover */ = {
+			isa = PBXGroup;
+			children = (
+				60FFFFFA1E665BCE0000741C /* PopoverViewController.swift */,
+				60FFFFFB1E665BCE0000741C /* PopoverViewController.xib */,
+				60FFFFFE1E6669140000741C /* WxkPresentationController.swift */,
+				60FF00041E66A7820000741C /* PopoverAnimator.swift */,
+			);
+			path = UIPopover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +341,7 @@
 				TargetAttributes = {
 					601556A21E4872D400780708 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = Y7H5W7AZLD;
 						ProvisioningStyle = Automatic;
 					};
 					601556B61E4872D400780708 = {
@@ -293,8 +382,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				601556B11E4872D400780708 /* LaunchScreen.storyboard in Resources */,
+				604AF0661E63D1C700AD3CC2 /* Home.storyboard in Resources */,
+				604AF06D1E63D25000AD3CC2 /* Profile.storyboard in Resources */,
 				601556AE1E4872D400780708 /* Assets.xcassets in Resources */,
+				60FFFFFD1E665BCE0000741C /* PopoverViewController.xib in Resources */,
+				601556EA1E4999D600780708 /* MainVCSettings.json in Resources */,
+				604AF0681E63D20800AD3CC2 /* Message.storyboard in Resources */,
+				604AF06B1E63D23500AD3CC2 /* Discover.storyboard in Resources */,
 				601556AC1E4872D400780708 /* Main.storyboard in Resources */,
+				60FFFFF41E651BBA0000741C /* VisitorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,11 +415,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60FFFFF61E656FC50000741C /* UIBarButtonItem-Extension.swift in Sources */,
 				601556E31E496A5C00780708 /* ProfileViewController.swift in Sources */,
 				601556A71E4872D400780708 /* AppDelegate.swift in Sources */,
 				601556DF1E496A3900780708 /* DiscoverViewController.swift in Sources */,
+				60FFFFFC1E665BCE0000741C /* PopoverViewController.swift in Sources */,
+				60FFFFF81E657C0E0000741C /* TitleButton.swift in Sources */,
 				601556DB1E495FCE00780708 /* MainViewController.swift in Sources */,
 				601556DD1E496A2800780708 /* HomeViewController.swift in Sources */,
+				60FFFFF01E6519550000741C /* BaseViewController.swift in Sources */,
+				60FFFFF21E651BAF0000741C /* VisitorView.swift in Sources */,
+				60FF00051E66A7820000741C /* PopoverAnimator.swift in Sources */,
+				60FF00031E666DE20000741C /* WxkPch.swift in Sources */,
+				60FFFFFF1E6669140000741C /* WxkPresentationController.swift in Sources */,
+				604AF0711E640D2D00AD3CC2 /* UIButton-backImage.swift in Sources */,
 				601556E11E496A4900780708 /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +479,24 @@
 				601556B01E4872D400780708 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		604AF0641E63D1C700AD3CC2 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				604AF0651E63D1C700AD3CC2 /* Base */,
+			);
+			name = Home.storyboard;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		604AF0691E63D23500AD3CC2 /* Discover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				604AF06A1E63D23500AD3CC2 /* Base */,
+			);
+			name = Discover.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -477,8 +600,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = Y7H5W7AZLD;
 				INFOPLIST_FILE = WeiBo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaokai.wang.WeiBo;
@@ -493,8 +617,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = Y7H5W7AZLD;
 				INFOPLIST_FILE = WeiBo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaokai.wang.WeiBo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -576,6 +701,7 @@
 				601556CD1E4872D400780708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		601556CE1E4872D400780708 /* Build configuration list for PBXNativeTarget "WeiBoTests" */ = {
 			isa = XCConfigurationList;
@@ -584,6 +710,7 @@
 				601556D01E4872D400780708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		601556D11E4872D400780708 /* Build configuration list for PBXNativeTarget "WeiBoUITests" */ = {
 			isa = XCConfigurationList;
@@ -592,6 +719,7 @@
 				601556D31E4872D400780708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
