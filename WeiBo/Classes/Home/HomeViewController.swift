@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import SDWebImage
+import MJRefresh
 class HomeViewController : BaseViewController {
     
     
@@ -19,6 +20,7 @@ class HomeViewController : BaseViewController {
     lazy var popoverAnimator : PopoverAnimator = PopoverAnimator { [weak self](presented)->() in
         self?.titleBtn.isSelected = presented
     }
+    lazy var viewModels : [StatusViewModel] = [StatusViewModel]()
     //MARK:--系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,26 +32,19 @@ class HomeViewController : BaseViewController {
         //2.设置导航栏的内容
         setupNavigationBar()
         
+//        // 请求首页数据
+//        loadStatus()
+//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
         
+        // 5,布局header
+        setupHeaderView()
+        // 6.布局footer
+        setupFooterView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
+  
 
 }
 //MARK:--设置UI界面
@@ -69,7 +64,22 @@ extension HomeViewController{
         navigationItem.titleView = titleBtn
         
     }
-    
+    // 下拉刷新
+    func setupHeaderView(){
+        // 创建headerView
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(HomeViewController.loadNewStatuses))
+        header?.setTitle("下拉刷新", for: .idle)
+        header?.setTitle("释放刷新", for: .pulling)
+        header?.setTitle("正在刷新", for: .refreshing)
+        
+        // 设置tableViewHeader
+        tableView.mj_header = header
+        tableView.mj_header.beginRefreshing()
+    }
+    func setupFooterView() {
+        // 创建footer
+     tableView.mj_footer =  MJRefreshAutoFooter(refreshingTarget: self, refreshingAction: "loadMoreStatuses")
+    }
 }
 //MARK:--NAV Title 点击事件
 extension HomeViewController{
@@ -92,4 +102,111 @@ extension HomeViewController{
     }
 
 }
+// MARK : 封装请求数据
+extension HomeViewController{
+    // 加载最新的数据
+    @objc func loadNewStatuses(){
+        print("loadNewStatuses")
+        loadStatus(isNewData: true)
+    }
+    // 加载更多的数据
+    @objc func loadMoreStatuses(){
+        print("loadNewStatuses")
+        loadStatus(isNewData: false)
+    }
+    
+    
+    func loadStatus(isNewData : Bool)  {
+        // 1.获取since_id 根据是不是最新数据
+        var since_id = 0
+        var max_id = 0
+        if isNewData {
+            since_id = viewModels.first?.status?.mid ?? 0
+        }else{
+            max_id = viewModels.last?.status?.mid ?? 0
+            max_id = max_id == 0 ? 0 : (max_id - 1)
+        }
+        NetworkTools.shareInstance.loadStatuses(max_id:max_id,since_id: since_id) { (result, error) in
+            if error != nil{
+                print(error!)
+                return
+            }
+           
+            // 获取可选类型的数组
+            guard  let resultArray = result else{
+                return
+            }
+            
+            // 遍历微博中对应的字典
+            var tempViewModel = [StatusViewModel]()
+            for statusDict in resultArray{
+                print(statusDict)
+                let status = Status(dict: statusDict)
+                let viewModel = StatusViewModel(status: status)
+                tempViewModel.append(viewModel)
+            }
+            //  4. 将数据放入到成员变量的数组中
+            if isNewData{
+                self.viewModels = tempViewModel + self.viewModels
+            }else{
+                self.viewModels += tempViewModel
+            }
+            // 5.缓存图片
+            self.cacheImages(viewModels: tempViewModel)
+            
+        }
+    }
+    func cacheImages(viewModels : [StatusViewModel]) {
+        // 0 创建group
+       
+        let group = DispatchGroup.init()
+       
+        
+        for viewmodel in viewModels {
+            for picURL in viewmodel.picURLs{
+                 group.enter()
+                SDWebImageDownloader.shared().downloadImage(with: picURL as URL, options: [], progress: nil, completed: { (image:UIImage?, data:Data?,error:Error?, finished:Bool) in
+                    group.leave()
+                
+                    SDImageCache.shared().storeImageData(toDisk: data, forKey: picURL.absoluteString)
+                    print("下载了一张图片")
+                })
+               
+                
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            self.tableView.reloadData()
+            print("刷新表格")
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+        }
+    }
+}
+// MARK:--tableViewDelegate
+extension HomeViewController{
+    // MARK: - Table view data source
+    
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 1. 创建cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCellID") as! HomeViewCell
+        // 给cell 设置数据
+        let viewModel = viewModels[indexPath.row]
+        
+        cell.viewModel = viewModel
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return viewModels.count
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 1. 获取模型对象
+        let viewModel = viewModels[indexPath.row]
+        return viewModel.cellHeight
+    }
+
+}

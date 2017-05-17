@@ -14,10 +14,15 @@ class BaseViewController: UITableViewController {
         // MARK:--懒加载属性
         lazy var visitorView : VisitorView = VisitorView.visitorView()
         //MARK:--定义变量
-        var isLogin : Bool = true
+        var isLogin : Bool = UserAccountViewModel.shareIntance.isLogin()
         
         // MARK:--系统回调函数
         override func loadView() {
+            
+            // 1.先从沙盒中读取归档信息
+           
+            // 判断要加载哪一个View
+            
             isLogin ? super.loadView() : setupVisitorView()
         }
         override func viewDidLoad() {
@@ -47,7 +52,13 @@ extension BaseViewController{
         
     }
     func loginBtnClick(){
+        // 1.创建授权控制器
+        let oauthVc = OAuthViewController()
         
+        // 2. 包装导航控制器
+        let oauthNav = UINavigationController(rootViewController : oauthVc)
+        // 3.弹出控制器
+        present(oauthNav, animated: true, completion: nil)
     }
 }
 
