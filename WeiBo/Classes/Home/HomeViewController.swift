@@ -21,6 +21,9 @@ class HomeViewController : BaseViewController {
         self?.titleBtn.isSelected = presented
     }
     lazy var viewModels : [StatusViewModel] = [StatusViewModel]()
+    
+    // 下拉时的label
+    lazy var tipLabel : UILabel = UILabel()
     //MARK:--系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,8 @@ class HomeViewController : BaseViewController {
         setupHeaderView()
         // 6.布局footer
         setupFooterView()
+        // 7.顶部tip
+        setupTipLabel()
     }
 
 
@@ -79,6 +84,19 @@ extension HomeViewController{
     func setupFooterView() {
         // 创建footer
      tableView.mj_footer =  MJRefreshAutoFooter(refreshingTarget: self, refreshingAction: "loadMoreStatuses")
+    }
+    func setupTipLabel(){
+        // 1. 将tipLabel添加到父控件
+        navigationController?.navigationBar.insertSubview(tipLabel, at: 0)
+        
+        // 2.设置tipLabel的frame
+        tipLabel.frame = CGRect(x: 0, y: 0, width: ScreenW, height: 32)
+        // 3.设置tipLabel 的属性
+        tipLabel.backgroundColor = UIColor.orange
+        tipLabel.textColor = UIColor.white
+        tipLabel.font = UIFont.systemFont(ofSize: 14)
+        tipLabel.textAlignment = .center
+        tipLabel.isHidden = true
     }
 }
 //MARK:--NAV Title 点击事件
@@ -153,7 +171,7 @@ extension HomeViewController{
             }
             // 5.缓存图片
             self.cacheImages(viewModels: tempViewModel)
-            
+
         }
     }
     func cacheImages(viewModels : [StatusViewModel]) {
@@ -181,6 +199,25 @@ extension HomeViewController{
             print("刷新表格")
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
+            // 显示label
+           
+            self.showTipLabel(count: viewModels.count)
+        }
+    }
+    /// 显示提示的label
+    func showTipLabel(count : Int){
+         tipLabel.isHidden = false
+        tipLabel.text = count == 0 ? "没有新数据" : "\(count)条新微博"
+        
+        // 2.执行动画
+        UIView.animate(withDuration: 1.0, animations: { 
+            self.tipLabel.frame.origin.y = 44
+        }) { (_) -> Void in
+            UIView.animate(withDuration: 1.0, delay: 1.5, options: [], animations: { 
+                self.tipLabel.frame.origin.y = 10
+            }, completion: { (_) -> Void in
+                self.tipLabel.isHidden = true
+            })
         }
     }
 }

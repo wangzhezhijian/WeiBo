@@ -63,6 +63,13 @@ extension MainViewController{
     // 过程： 将方法包装成SEL--> 类中查找方法列表 --> 根据@SEL 找到imp指针(函数指针)--> 执行函数
     // private 声明的话，那么该函数不会被添加到方法列表中
    func composeBtnClick(){
-         
+         // 1. 创建发布控制器
+        let composeVc = ComposeViewController()
+        // 2. 包装导航控制器
+        let composeNav = UINavigationController(rootViewController: composeVc)
+    // 3. 弹出控制器
+    present(composeNav, animated: true) { 
+        
+    }
     }
 }
