@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeViewController" customModule="WeiBo" customModuleProvider="target">
             <connections>
+                <outlet property="picPickerView" destination="0yY-I7-Ekr" id="cNs-I6-Ol8"/>
                 <outlet property="picPickerViewBottomCons" destination="DjY-92-ovc" id="IkD-t7-VAt"/>
                 <outlet property="textView" destination="9XL-Iv-LA2" id="rGE-yx-P1R"/>
                 <outlet property="toolBarCons" destination="cjZ-Kz-oeY" id="dXd-Sn-SFA"/>
@@ -106,13 +107,13 @@
             <constraints>
                 <constraint firstItem="9XL-Iv-LA2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Xf-Op-1wD"/>
                 <constraint firstItem="Lfl-TD-Y0k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GBd-wO-KRU"/>
+                <constraint firstAttribute="bottom" secondItem="0yY-I7-Ekr" secondAttribute="bottom" constant="44" id="JQt-vD-nE0"/>
                 <constraint firstAttribute="trailing" secondItem="9XL-Iv-LA2" secondAttribute="trailing" id="JyH-R2-0VI"/>
                 <constraint firstAttribute="trailing" secondItem="Lfl-TD-Y0k" secondAttribute="trailing" id="cK0-Rv-6Qa"/>
                 <constraint firstAttribute="bottom" secondItem="Lfl-TD-Y0k" secondAttribute="bottom" id="cjZ-Kz-oeY"/>
                 <constraint firstAttribute="bottom" secondItem="9XL-Iv-LA2" secondAttribute="bottom" id="hmv-cc-3Dy"/>
                 <constraint firstItem="9XL-Iv-LA2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kpF-NC-SgG"/>
                 <constraint firstAttribute="trailing" secondItem="0yY-I7-Ekr" secondAttribute="trailing" id="rRy-a9-q7g"/>
-                <constraint firstItem="Lfl-TD-Y0k" firstAttribute="top" secondItem="0yY-I7-Ekr" secondAttribute="bottom" id="uWf-u6-484"/>
                 <constraint firstItem="0yY-I7-Ekr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z3o-gv-wpS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

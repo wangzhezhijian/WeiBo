@@ -12,6 +12,13 @@ fileprivate let edgeMargin : CGFloat = 15
 
 class PicPickerCollectionView: UICollectionView {
 
+    //MARK:定义属性
+    var imagesArr : [UIImage] = [UIImage]() {
+        didSet{
+            reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // 设置线性布局
@@ -32,13 +39,14 @@ class PicPickerCollectionView: UICollectionView {
 extension PicPickerCollectionView : UICollectionViewDataSource{
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return imagesArr.count+1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: picCell, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: picCell, for: indexPath) as! PictureCollectionViewCell
         
         // 给cell 设置数据
 //        cell.backgroundColor = UIColor.red
+        cell.image = indexPath.item <= imagesArr.count-1 ? imagesArr[indexPath.item] : nil
         return cell
     }
 }

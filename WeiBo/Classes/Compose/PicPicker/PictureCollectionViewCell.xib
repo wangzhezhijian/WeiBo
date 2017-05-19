@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="87" height="84"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TR3-Fm-xot">
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TR3-Fm-xot">
                         <rect key="frame" x="0.0" y="0.0" width="87" height="84"/>
                         <state key="normal" backgroundImage="compose_pic_add"/>
                         <state key="highlighted" backgroundImage="compose_pic_add_highlighted"/>
@@ -26,6 +26,9 @@
                             <action selector="addPhotoClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="if9-UG-3uO"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4vZ-OZ-EVy">
+                        <rect key="frame" x="0.0" y="0.0" width="87" height="84"/>
+                    </imageView>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H87-XQ-bcK">
                         <rect key="frame" x="63" y="0.0" width="24" height="24"/>
                         <constraints>
@@ -33,18 +36,30 @@
                             <constraint firstAttribute="height" constant="24" id="tqT-VU-ZoO"/>
                         </constraints>
                         <state key="normal" backgroundImage="compose_photo_close"/>
+                        <connections>
+                            <action selector="removePhotoClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ded-fa-Cka"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="4vZ-OZ-EVy" secondAttribute="trailing" id="ObI-nd-O4c"/>
                 <constraint firstAttribute="trailing" secondItem="H87-XQ-bcK" secondAttribute="trailing" id="UJq-bJ-w85"/>
                 <constraint firstAttribute="bottom" secondItem="TR3-Fm-xot" secondAttribute="bottom" id="aYq-Yi-DCk"/>
+                <constraint firstAttribute="bottom" secondItem="4vZ-OZ-EVy" secondAttribute="bottom" id="dFS-o2-aFx"/>
                 <constraint firstAttribute="trailing" secondItem="TR3-Fm-xot" secondAttribute="trailing" id="eMK-ZN-Hah"/>
+                <constraint firstItem="4vZ-OZ-EVy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ey3-gq-uiS"/>
                 <constraint firstItem="TR3-Fm-xot" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hbZ-GR-nOe"/>
                 <constraint firstItem="TR3-Fm-xot" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pvS-TQ-ZnB"/>
+                <constraint firstItem="4vZ-OZ-EVy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="slf-JU-PIi"/>
                 <constraint firstItem="H87-XQ-bcK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uq9-4x-BxZ"/>
             </constraints>
             <size key="customSize" width="87" height="84"/>
+            <connections>
+                <outlet property="addPhotoBtn" destination="TR3-Fm-xot" id="ZNa-BW-2rJ"/>
+                <outlet property="imageView" destination="4vZ-OZ-EVy" id="Hto-gl-D1r"/>
+                <outlet property="removePhotoBtn" destination="H87-XQ-bcK" id="uXZ-b3-Bs1"/>
+            </connections>
             <point key="canvasLocation" x="52.5" y="73"/>
         </collectionViewCell>
     </objects>

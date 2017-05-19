@@ -17,11 +17,13 @@ class ComposeViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    @IBOutlet weak var picPickerView: PicPickerCollectionView!
     @IBOutlet weak var picPickerViewBottomCons: NSLayoutConstraint!
     @IBOutlet weak var toolBarCons: NSLayoutConstraint!
     @IBOutlet weak var textView: ComposeTextView!
     // MARK:--懒加载属性
     lazy var titleView : ComposeTitleView = ComposeTitleView()
+    fileprivate lazy var images : [UIImage] = [UIImage]()
     // MARK: --系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,8 @@ extension ComposeViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         // 监听添加照片的按钮的点击
         NotificationCenter.default.addObserver(self, selector: #selector(ComposeViewController.addPhotoClick), name: NSNotification.Name(rawValue: PicPickerAddPhotoNote), object: nil)
+        // 删除照片的监听
+        NotificationCenter.default.addObserver(self, selector: #selector(removePhotoClick(_:)), name: NSNotification.Name(rawValue: PicPickerRemovePhotoNote), object: nil)
     }
 }
 // MARK:--事件监听函数
@@ -108,6 +112,24 @@ extension ComposeViewController{
         }
 
     }
+    @objc fileprivate func removePhotoClick(_ note : NSNotification){
+        print("删除照片")
+        print(note.object)
+        // 获取image对象
+       guard let image = note.object as? UIImage else{
+            return
+       
+        }
+        // 2. 获取所在的下标值
+        guard let index = images.index(of: image) else {
+            return
+        }
+        // 3.将图片从数组中删除
+        images.remove(at: index)
+        // 4.重写赋值collectionView新的数组
+        picPickerView.imagesArr = images
+      
+    }
     
     
 }
@@ -117,7 +139,15 @@ extension ComposeViewController : UIImagePickerControllerDelegate,UINavigationCo
         print(info)
         // 1. 获取选中的照片
         let image = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        // 展示照片
+        // 2.展示照片
+        images.append(image)
+        // 3.将数组赋值给collectionview 去展示数据
+        picPickerView.imagesArr = images
+        // 4. 退出选择照片控制器
+        picker.dismiss(animated: true) { 
+            self.textView.resignFirstResponder()
+        }
+        
     }
 }
 //MARK:--UITextView的代理方法
