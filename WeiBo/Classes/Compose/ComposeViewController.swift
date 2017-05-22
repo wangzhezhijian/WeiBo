@@ -17,13 +17,70 @@ class ComposeViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    // MARK:--表情键盘点击
+    @IBAction func emotionBtnClick(_ sender: Any) {
+        // 1. 退出键盘
+        textView.resignFirstResponder()
+        // 2. 切换键盘
+       textView.inputView = textView.inputView != nil ? nil : emoticonVc.view
+        // 3. 弹出键盘
+        textView.becomeFirstResponder()
+       
+    }
     @IBOutlet weak var picPickerView: PicPickerCollectionView!
     @IBOutlet weak var picPickerViewBottomCons: NSLayoutConstraint!
     @IBOutlet weak var toolBarCons: NSLayoutConstraint!
     @IBOutlet weak var textView: ComposeTextView!
     // MARK:--懒加载属性
     lazy var titleView : ComposeTitleView = ComposeTitleView()
+    fileprivate lazy var emoticonVc : EmoticonViewController = EmoticonViewController { [weak self] (emoticon) -> Void in
+        
+        self?.insertEmoticonIntoTextView(emoticon: emoticon)
+    }
+    fileprivate func insertEmoticonIntoTextView(emoticon : Emoticon){
+        print(emoticon)
+        // 1. 点击的有可能是空白表情
+        if emoticon.isEmpty {
+            return
+        }
+        //2.删除按钮
+        if emoticon.isRemove {
+            textView.deleteBackward()
+            return
+        }
+        // 3.如果是emoji表情
+        if emoticon.emojiCode != nil {
+            // 3.1 获取光标所在的位置
+            let textRange = textView.selectedTextRange!
+            // 3.2 替换emoji表情
+            textView.replace(textRange, withText: emoticon.emojiCode!)
+            return
+        }
+        // 4. 普通表情: 图文混排
+        // 4.1 根据图片路径创建属性字符串
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(contentsOfFile: emoticon.pngPath!)
+        let font = textView.font!
+        attachment.bounds = CGRect(x: 0, y: -4, width: font.lineHeight, height: font.lineHeight)
+        let attImageStr = NSAttributedString(attachment: attachment)
+        
+        // 4.2 创建可变的属性字符串
+        let attMStr = NSMutableAttributedString(attributedString: textView.attributedText)
+        // 4.3 将我们的图片属性字符串替换到可变属性字符串的某一个位置
+        let range = textView.selectedRange
+        attMStr.replaceCharacters(in: range, with: attImageStr)
+        // 5 .显示属性字符串
+        
+        textView.attributedText = attMStr
+        // 将文字的大小重置
+        textView.font = font
+        // 将光标设置为我们的原来位置+1
+        textView.selectedRange = NSRange(location : range.location + 1,length : 0)
+        
+    }
     fileprivate lazy var images : [UIImage] = [UIImage]()
+    
+   
     // MARK: --系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +89,9 @@ class ComposeViewController: UIViewController {
         
        // 创建通知
         setupNoti()
+        
+        // 
+      
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
