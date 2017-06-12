@@ -31,7 +31,7 @@ extension OAuthViewController{
         // 1. 设置左侧的item
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .plain, target: self, action: #selector(OAuthViewController.closeItemClick))
         // 2. 设置右侧的item
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "填充", style: .plain, target: self, action: #selector(OAuthViewController.fillItemClick))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "填充", style: .plain, target: self, action: #selector(OAuthViewController.fillItemClick))
         // 3.设置标题
         title = "登录界面"
     }
@@ -55,12 +55,12 @@ extension OAuthViewController{
     func closeItemClick()  {
         dismiss(animated: true, completion: nil)
     }
-    func fillItemClick(){
-        // 1. 书写js代码JavaScript
-        let jsCode = "document.getElementById(\"userId\").value = \"1581076072@qq.com\";document.getElementById(\"passwd\").value = \"wangxiaokai2017\";"
-        // 执行js代码
-        webView.stringByEvaluatingJavaScript(from: jsCode)
-    }
+//    func fillItemClick(){
+//        // 1. 书写js代码JavaScript
+//        let jsCode = "document.getElementById(\"userId\").value = \"1581076072@qq.com\";document.getElementById(\"passwd\").value = \"wangxiaokai2017\";"
+//        // 执行js代码
+//        webView.stringByEvaluatingJavaScript(from: jsCode)
+//    }
 }
 //MARK:--webView的delegate
 extension OAuthViewController : UIWebViewDelegate{

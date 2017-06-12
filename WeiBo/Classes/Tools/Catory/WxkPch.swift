@@ -26,5 +26,9 @@ let app_secret = "0ca2dd994d058c04938972f2775878ae"
 let redirect_uri = "https://github.com/wangzhezhijian/WeiBo"
 let PicPickerAddPhotoNote = "PicPickerAddPhotoNote"
 let PicPickerRemovePhotoNote = "PicPickerRemovePhotoNote"
+//MARK :-- 照片浏览器的通知常量
+let ShowPhotoBrowserNote = "ShowPhotoBrowserNote"
+let ShowPhotoBrowserIndexKey = "ShowPhotoBrowserIndexKey"
+let ShowPhotoBrowserUrlsKey = "ShowPhotoBrowserUrlsKey"
 
 

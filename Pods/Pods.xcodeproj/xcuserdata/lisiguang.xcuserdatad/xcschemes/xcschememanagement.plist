@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HYLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,22 +42,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0429E13E3E126F34CDE11A08FE1952F2</key>
+		<key>2927BA478881B0EB195CF98A0D5162AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>245211E611F67504E8752BD318B02925</key>
+		<key>384D4FE7E2BD4B3D77F255107DC0F47D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9636D1C1A8E3A4D86CCDA1788B68DAAB</key>
+		<key>5A51A2A134576C2EF28AD247BE4AE5DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9AE1309C7ACA0DA7AB8012F85B8B1215</key>
+		<key>65F514A5862D542A597D2B5B35253741</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C1D14BA8E70CFDE14454641CEC9EA8DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

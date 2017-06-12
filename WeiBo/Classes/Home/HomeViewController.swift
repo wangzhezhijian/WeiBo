@@ -24,6 +24,7 @@ class HomeViewController : BaseViewController {
     
     // 下拉时的label
     lazy var tipLabel : UILabel = UILabel()
+    fileprivate lazy var photoBrowserAnimator : PhotoBrowserAnimator = PhotoBrowserAnimator()
     //MARK:--系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +47,15 @@ class HomeViewController : BaseViewController {
         setupFooterView()
         // 7.顶部tip
         setupTipLabel()
+        // 8.监听通知
+        setupNotifications()
     }
 
 
   
 
 }
+
 //MARK:--设置UI界面
 extension HomeViewController{
     //1. 设置左侧的Item
@@ -83,7 +87,7 @@ extension HomeViewController{
     }
     func setupFooterView() {
         // 创建footer
-     tableView.mj_footer =  MJRefreshAutoFooter(refreshingTarget: self, refreshingAction: "loadMoreStatuses")
+     tableView.mj_footer =  MJRefreshAutoFooter(refreshingTarget: self, refreshingAction: #selector(HomeViewController.loadMoreStatuses))
     }
     func setupTipLabel(){
         // 1. 将tipLabel添加到父控件
@@ -98,6 +102,9 @@ extension HomeViewController{
         tipLabel.textAlignment = .center
         tipLabel.isHidden = true
     }
+    func setupNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(showPhotoBrowser(_ :)), name: NSNotification.Name(rawValue: ShowPhotoBrowserNote), object: nil)
+    }
 }
 //MARK:--NAV Title 点击事件
 extension HomeViewController{
@@ -111,12 +118,31 @@ extension HomeViewController{
         // 2.设置转场的代理
         popoverVc.transitioningDelegate = popoverAnimator
         popoverAnimator.presentedFrame = CGRect(x: ScreenW/2-75, y: 60, width: 150, height: 250)
+    
         //3.弹出控制器
         present(popoverVc, animated: true) { 
             
         }
     
     
+    }
+    @objc func showPhotoBrowser(_ note : Notification){
+        //取出数据
+        let indexPath = note.userInfo![ShowPhotoBrowserIndexKey]as! NSIndexPath
+        let picURLs = note.userInfo![ShowPhotoBrowserUrlsKey]as! [URL]
+        let object = note.object as! PicCollectionView
+        // 创建控制器
+        let photoBrowserVc = PhotoBrowserViewController(indexPath: indexPath , picURLs: picURLs )
+        photoBrowserVc.modalPresentationStyle = .custom
+        photoBrowserVc.transitioningDelegate = photoBrowserAnimator
+        // 设置动画的delegate
+        photoBrowserAnimator.presentedDelegate = object
+        photoBrowserAnimator.dismissDelegate = photoBrowserVc
+        photoBrowserAnimator.indexPath = indexPath as IndexPath
+        // 以model的形势弹出
+        present(photoBrowserVc, animated: true) {
+            
+        }
     }
 
 }

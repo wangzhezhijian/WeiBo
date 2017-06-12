@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2927BA478881B0EB195CF98A0D5162AA'
-               BlueprintName = 'SnapKit'
+               BlueprintIdentifier = '384D4FE7E2BD4B3D77F255107DC0F47D'
+               BlueprintName = 'HYLabel'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SnapKit.framework'>
+               BuildableName = 'HYLabel.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

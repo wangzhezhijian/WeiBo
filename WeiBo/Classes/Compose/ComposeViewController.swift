@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class ComposeViewController: UIViewController {
 
     @IBAction func picturePicker(_ sender: UIButton) {
@@ -34,49 +34,8 @@ class ComposeViewController: UIViewController {
     // MARK:--懒加载属性
     lazy var titleView : ComposeTitleView = ComposeTitleView()
     fileprivate lazy var emoticonVc : EmoticonViewController = EmoticonViewController { [weak self] (emoticon) -> Void in
-        
-        self?.insertEmoticonIntoTextView(emoticon: emoticon)
-    }
-    fileprivate func insertEmoticonIntoTextView(emoticon : Emoticon){
-        print(emoticon)
-        // 1. 点击的有可能是空白表情
-        if emoticon.isEmpty {
-            return
-        }
-        //2.删除按钮
-        if emoticon.isRemove {
-            textView.deleteBackward()
-            return
-        }
-        // 3.如果是emoji表情
-        if emoticon.emojiCode != nil {
-            // 3.1 获取光标所在的位置
-            let textRange = textView.selectedTextRange!
-            // 3.2 替换emoji表情
-            textView.replace(textRange, withText: emoticon.emojiCode!)
-            return
-        }
-        // 4. 普通表情: 图文混排
-        // 4.1 根据图片路径创建属性字符串
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(contentsOfFile: emoticon.pngPath!)
-        let font = textView.font!
-        attachment.bounds = CGRect(x: 0, y: -4, width: font.lineHeight, height: font.lineHeight)
-        let attImageStr = NSAttributedString(attachment: attachment)
-        
-        // 4.2 创建可变的属性字符串
-        let attMStr = NSMutableAttributedString(attributedString: textView.attributedText)
-        // 4.3 将我们的图片属性字符串替换到可变属性字符串的某一个位置
-        let range = textView.selectedRange
-        attMStr.replaceCharacters(in: range, with: attImageStr)
-        // 5 .显示属性字符串
-        
-        textView.attributedText = attMStr
-        // 将文字的大小重置
-        textView.font = font
-        // 将光标设置为我们的原来位置+1
-        textView.selectedRange = NSRange(location : range.location + 1,length : 0)
-        
+        self?.textView.insertEmoticon(emoticon: emoticon)
+        self?.textViewDidChange(self!.textView)
     }
     fileprivate lazy var images : [UIImage] = [UIImage]()
     
@@ -133,6 +92,33 @@ extension ComposeViewController{
     }
     @objc func sendItemClick(){
         print("send")
+        
+        print(textView.getEmoticonString())
+        
+        // 1. 获取发送微博的正文
+        let statusText = textView.getEmoticonString()
+        
+        // 2.定义回调的闭包
+        let finishedCallback = {(isSuccess : Bool) -> () in
+            if !isSuccess{
+                SVProgressHUD.show(withStatus: "发送微博失败")
+                return
+            }
+            SVProgressHUD.show(withStatus: "发送微博成功")
+            self.dismiss(animated: true, completion: {
+                SVProgressHUD.dismiss()
+            })
+
+        }
+        // 2.获取用户选中的图片
+        
+        
+        if let image = images.first{
+            NetworkTools.shareInstance.sendStatus(statusText: statusText, image: image, isSuccess: finishedCallback)
+        }else{
+        // 2. 调用接口发送微博
+            NetworkTools.shareInstance.sendStatus(statusText: statusText, isSuccess : finishedCallback)
+        }
     }
     @objc func keyboardWillChangeFrame(_ note : Notification){
         print(note.userInfo)

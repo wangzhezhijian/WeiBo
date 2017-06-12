@@ -61,7 +61,9 @@ class HomeViewCell: UITableViewCell {
             }
            
             // 8.设置正文
-            contentLabel.text = viewModel.status?.text
+            let statusText = viewModel.status?.text
+            
+            contentLabel.attributedText = FIndEmoticon.shareIntance.findAttString(statusText: statusText ,font: contentLabel.font)
             // 9.设置昵称的文字颜色
             screenNameLabel.textColor = viewModel.vipImage == nil ? UIColor.black : UIColor.orange
             // 10.计算picView的宽度和高度的约束
@@ -74,8 +76,9 @@ class HomeViewCell: UITableViewCell {
             if viewModel.status?.retweeted_status != nil {
                 if let screenName = viewModel.status?.retweeted_status?.user?.screen_name,let retweetedText = viewModel.status?.retweeted_status?.text{
                     
+                    let retweetText =  "@" + "\(screenName): " + retweetedText
+                   retweetedContentLabel.attributedText = FIndEmoticon.shareIntance.findAttString(statusText: retweetText, font: retweetedContentLabel.font)
                     
-                   retweetedContentLabel.text = "@" + "\(screenName): " + retweetedText
                     // 设置转发正文距离顶部的约束
                     reteweetedContentLabelTopCons.constant = 15
                 }
@@ -131,21 +134,23 @@ extension HomeViewCell{
             SDImageCache.shared().queryCacheOperation(forKey: urlString, done: { (image:UIImage?, data:Data?, cacheType:SDImageCacheType) in
                 print("缓存中查找到了")
             })
-            let image1 = SDImageCache.shared().imageFromDiskCache(forKey: urlString)
+            guard let image1 = SDImageCache.shared().imageFromDiskCache(forKey: urlString) else {
+                return .zero
+            }
             print(image1)
             var imageH : CGFloat = 0
             var imageW : CGFloat = 0
-            if (image1?.size.height)! > ScreenH {
+            if (image1.size.height) > ScreenH {
                 imageH = ScreenH/3
-            }else if (image1?.size.height)! < ScreenH/2{
-                imageH = (image1?.size.height)!
+            }else if (image1.size.height) < ScreenH/2{
+                imageH = (image1.size.height)
             }else{
                 imageH = ScreenH/2
             }
-            if (image1?.size.width)! > ScreenW {
+            if (image1.size.width) > ScreenW {
                 imageW = ScreenW/2
             }else{
-                imageW = (image1?.size.height)!
+                imageW = (image1.size.height)
             }
             
             layout.itemSize = CGSize(width: imageW, height: imageH)
